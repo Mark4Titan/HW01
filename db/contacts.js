@@ -13,7 +13,6 @@ async function listContacts() {
 
 // пошук по id контакту
 async function getContactById(contactId) {
-  if (!contactId) return { data: "no id", code: 404, params: "log" };
   const contacts = (await listContacts()).data;
 
   const getСontactId = contacts.find((item) => item.id === contactId);
@@ -25,7 +24,6 @@ async function getContactById(contactId) {
 
 // видалення контакту
 async function removeContact(contactId) {
-  if (!contactId) return { data: "no id", code: 400, params: "log" };
   const contacts = (await listContacts()).data;
 
   const foundСontactId = contacts.find((item) => item.id === contactId);
@@ -39,7 +37,7 @@ async function removeContact(contactId) {
 
 // додавання контакту
 async function addContact(name, email, phone) {
-  if (!name.trim() || !phone.trim())
+  if (!name || !phone)
     return { data: "Invalid name or phone number", code: 400, params: "log" };
   const newId = IdGenerator();
   const nevContact = { id: newId, name, email, phone };

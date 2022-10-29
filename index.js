@@ -14,10 +14,10 @@ const argv = program.opts();
 
 async function invokeAction({
   action,
-  id = null,
-  name = null,
-  email = null,
-  phone = null,
+  id,
+  name,
+  email,
+  phone,
 }) {
   switch (action) {
     case "list":
